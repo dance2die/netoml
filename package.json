@@ -36,5 +36,9 @@
     "tsdx": "^0.9.0",
     "tslib": "^1.10.0",
     "typescript": "^3.6.2"
+  },
+  "dependencies": {
+    "@netlify/cli-utils": "^1.0.7",
+    "toml-js": "^0.0.8"
   }
 }
