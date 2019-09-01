@@ -29,7 +29,7 @@ You can get the site name from...
 If you already have an existing `netlify.toml` file in the current directly, you will be prompted to overwrite or rename it.
 
 ```bash
-$ netoml --name site_name
+$ netoml site_name
 "Overwrite 'netlify.toml' in current directory?"
 > Yes
 > No
@@ -38,24 +38,21 @@ $ netoml --name site_name
 You can specify the output file name using `--out` (or `-o`).
 
 ```bash
-netoml --name site_name --out private-netlify.toml
+netoml site_name --out private-netlify.toml
 - or -
-netoml --name site_name -o private-netlify.toml
+netoml site_name -o private-netlify.toml
 ```
 
 Lastly, you can overwrite the existing `netlify.toml` without being prompted.
 
 ```bash
-netoml --name site_name --ovewrite
+netoml site_name --ovewrite
 - or -
-netoml --name  site_name -ow
+netoml  site_name -ow
 ```
 
 #### Flags
 
-- --name | -n - Site name to generate the `netlify.toml` for.
-  - If the name isn't found, you will get an exception
-  - @todo: create a test for the exception........
 - --out | -o - Name of output file (e.g. `netlify.toml` or `../../netlify.toml`)
 - --overwrite | -ow - Overwrite existing `netlify.toml` file without prompt
 
