@@ -1,27 +1,55 @@
-# TSDX Bootstrap
+# Netoml
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+A library to build Netlify TOML
 
-## Local Development
+Also can be used a as a CLI.
 
-Below is a list of commands you will probably find useful.
+## Usage
 
-### `npm start` or `yarn start`
+You can use Netoml as a CLI (command-line interface) or as a library.
 
-Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code's Problems tab.
+### CLI
 
-<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
+If using it as a CLI, you'd need to [login](https://cli.netlify.com/commands/login) using [Netlify-CLI](https://cli.netlify.com/) first.
 
-Your library will be rebuilt if you make edits.
+Logging in via `netlify login` would creates an access token, which is used by `netoml`.
 
-### `npm run build` or `yarn build`
+Running the following command will create `netlify.toml` in the current directory.
 
-Bundles the package to the `dist` folder.
-The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
+```bash
+$ netoml
+```
 
-<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+If you already have an existing `netlify.toml` file in the current directly, you will be prompted to overwrite or rename it.
 
-### `npm test` or `yarn test`
+```bash
+$ netoml
+"Overwrite 'netlify.toml' in current directory?"
+> Yes
+> No
+```
 
-Runs the test watcher (Jest) in an interactive mode.
-By default, runs tests related to files changed since the last commit.
+You can specify the output file name using `--out` (or `-o`).
+
+```bash
+netoml --out private-netlify.toml
+- or -
+netoml -o private-netlify.toml
+```
+
+Lastly, you can overwrite the existing `netlify.toml` without being prompted.
+
+```bash
+netoml --ovewrite
+- or -
+netoml -ow
+```
+
+#### Flags
+
+- --out | -o - Name of output file (e.g. `netlify.toml` or `../../netlify.toml`)
+- --overwrite | -ow - Overwrite existing `netlify.toml` file without prompt
+
+_In later version, I might add a flag to pass the access token directly without having to login using `netlify-cli`._
+
+### Library
