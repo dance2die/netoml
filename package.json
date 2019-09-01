@@ -13,6 +13,10 @@
     "test": "tsdx test"
   },
   "peerDependencies": {},
+  "bin": {
+    "ntml": "./bin/run",
+    "netoml": "./bin/run"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
