@@ -10,7 +10,7 @@ import auth from '../src/auth'
 
 describe('Authentication', () => {
   test('that user has logged in', () => {
-    expect(auth.isLoggedIn()).toBe(true)
+    expect(auth.isLoggedIn()).toEqual(true)
   });
 });
 
