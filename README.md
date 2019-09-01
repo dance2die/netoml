@@ -48,7 +48,7 @@ Lastly, you can overwrite the existing `netlify.toml` without being prompted.
 ```bash
 netoml site_name --ovewrite
 - or -
-netoml  site_name -ow
+netoml site_name -ow
 ```
 
 #### Flags
