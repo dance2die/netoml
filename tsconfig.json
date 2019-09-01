@@ -20,8 +20,9 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
+      "@auth/*": ["src/auth/*"],
       "*": ["src/*", "node_modules/*"]
     },
     "jsx": "react",
