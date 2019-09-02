@@ -31,6 +31,7 @@ interface Build {
   // "cmd"
   command?: string;
   environment?: BuildEnvironment;
+  functions?: string,
   // "processing_settings"
   processing: BuildProcessing
 }

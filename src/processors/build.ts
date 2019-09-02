@@ -46,6 +46,7 @@ export default (site: any): Build => {
     publish: buildSettings.dir,
     command: buildSettings.cmd,
     environment: buildSettings.env,
+    functions: buildSettings.functions_dir,
     processing
   }
 }

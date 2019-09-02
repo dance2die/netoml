@@ -28,6 +28,7 @@ describe('JSON', () => {
       expect(actual).toHaveProperty('build')
       expect(actual).toHaveProperty('build.publish')
       expect(actual).toHaveProperty('build.command')
+      expect(actual).toHaveProperty('build.functions')
       expect(actual).toHaveProperty('build.environment')
       expect(actual).toHaveProperty('build.environment.GITHUB_TOKEN')
       expect(actual).toHaveProperty('build.environment.TWITTER_CONSUMER_KEY')
