@@ -1,6 +1,3 @@
-// import NetlifyAPI from 'netlify'
-import toml from 'toml-js'
-
 import Auth from './auth';
 import {
   NetlifyToml
@@ -9,6 +6,7 @@ import {
   , Netoml
 } from './types/index'
 import buildProcessor from './processors/build'
+import { convertToToml } from './converters/toml'
 
 const NetlifyAPI = require("netlify");
 
@@ -31,10 +29,7 @@ const toToml: toToml = async options => {
   if (options === null) return "";
 
   const json = await toJson(options)
-  const result = toml.dump(json);
-  // console.log(`TOML result`, result)
-
-  return result;
+  return convertToToml(json);
 }
 
 const Netoml = {
