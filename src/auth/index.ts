@@ -7,8 +7,8 @@ export interface Auth {
 }
 
 const Auth = {
-  accessToken: cmd.getConfigToken()[1],
-  isLoggedIn: cmd.getConfigToken()[1] !== undefined
+  accessToken: cmd.getConfigToken()[0],
+  isLoggedIn: cmd.getConfigToken()[0] !== undefined
 }
 
 export default Auth

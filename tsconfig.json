@@ -8,7 +8,7 @@
     "declaration": true,
     "sourceMap": true,
     "rootDir": "./",
-    "strict": true,
+    "strict": false,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,

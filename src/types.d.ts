@@ -3,6 +3,13 @@ declare module 'toml-js' {
 }
 
 
+declare module "netlify" {
+  export class NetlifyAPI {
+    constructor(accessToken: string);
+    listSites: () => { name: string }
+  }
+}
+
 declare module "@netlify/cli-utils" {
   export class BaseCommand {
     constructor();

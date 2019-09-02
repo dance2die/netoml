@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@netlify/cli-utils": "^1.0.7",
+    "netlify": "^2.4.8",
     "toml-js": "^0.0.8"
   }
 }
