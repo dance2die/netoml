@@ -9,10 +9,6 @@ export interface Auth {
 const Auth = {
   accessToken: cmd.getConfigToken()[1],
   isLoggedIn: cmd.getConfigToken()[1] !== undefined
-  //   // "getConfigToken" https://github.com/netlify/cli-utils/blob/master/src/index.js#L140
-  //   const [, accessToken] = cmd.getConfigToken()
-  //   return accessToken !== undefined;
-  // }
 }
 
 export default Auth

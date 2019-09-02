@@ -1,6 +1,17 @@
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop');
-  }
-  return a + b;
-};
+import toml from 'toml-js'
+
+export type toToml = (json?: object) => string;
+const toToml: toToml = json => {
+  if (json === undefined) return "";
+
+  return toml.dump(json);
+}
+
+export interface Netoml {
+  toToml: toToml
+}
+const Netoml = {
+  toToml
+}
+
+export default Netoml;
