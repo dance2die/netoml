@@ -17,7 +17,7 @@ Logging in via `netlify login` would creates an access token, which is used by `
 Running the following command will create `netlify.toml` in the current directory.
 
 ```bash
-$ netoml --name site_name
+$ netoml site_name
 ```
 
 The command above will generate `netlify.toml` in the current directory for the site specified as `site_name`.
