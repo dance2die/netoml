@@ -1,11 +1,11 @@
-// import Auth from '../src/auth'
+import Auth from '../src/auth'
 // import Netoml from '../src'
 
-// xdescribe('Authentication', () => {
-//   test('user is logged in', () => {
-//     expect(Auth.isLoggedIn).toBe(true)
-//   });
-// });
+describe('Authentication', () => {
+    test('user is logged in', () => {
+        expect(Auth.isLoggedIn).toBe(true)
+    });
+});
 
 // const data: object = {
 //   // "build_settings"
