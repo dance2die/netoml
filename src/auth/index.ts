@@ -1,12 +1,18 @@
 const BaseCommand = require("@netlify/cli-utils");
 const cmd = new BaseCommand()
 
-const auth = {
-  isLoggedIn() {
-    // "getConfigToken" https://github.com/netlify/cli-utils/blob/master/src/index.js#L140
-    const [, accessToken] = cmd.getConfigToken()
-    return accessToken !== undefined;
-  }
+export interface Auth {
+  accessToken: string;
+  isLoggedIn: boolean;
 }
 
-export default auth
+const Auth = {
+  accessToken: cmd.getConfigToken()[1],
+  isLoggedIn: cmd.getConfigToken()[1] !== undefined
+  //   // "getConfigToken" https://github.com/netlify/cli-utils/blob/master/src/index.js#L140
+  //   const [, accessToken] = cmd.getConfigToken()
+  //   return accessToken !== undefined;
+  // }
+}
+
+export default Auth

@@ -1,8 +1,13 @@
-import auth from '../src/auth'
+import Auth from '../src/auth'
 
 describe('Authentication', () => {
   test('user is logged in', () => {
-    expect(auth.isLoggedIn()).toBe(true)
+    expect(Auth.isLoggedIn).toBe(true)
   });
 });
 
+describe('toToml', () => {
+  test('', () => { })
+  xtest('', () => { })
+  xtest('', () => { })
+})
