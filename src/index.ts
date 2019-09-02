@@ -30,8 +30,11 @@ const toJson: toJson = async options => {
 const toToml: toToml = async options => {
   if (options === null) return "";
 
-  const json = toJson(options)
-  return toml.dump(json);
+  const json = await toJson(options)
+  const result = toml.dump(json);
+  // console.log(`TOML result`, result)
+
+  return result;
 }
 
 const Netoml = {

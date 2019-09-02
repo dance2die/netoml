@@ -1,6 +1,8 @@
 import Auth from '../src/auth'
 import Netoml from '../src'
 
+const options = { name: 'reactblocks' }
+
 describe('Authentication', () => {
   test('user is logged in', () => {
     expect(Auth.isLoggedIn).toBe(true)
@@ -20,7 +22,7 @@ describe('JSON', () => {
 
   describe('Build', () => {
     it('renders Build configuration correctly', async () => {
-      const actual = await Netoml.toJson({ name: 'reactblocks' })
+      const actual = await Netoml.toJson(options)
       // console.log(`actual ==>`, actual)
 
       expect(actual).toHaveProperty('build')
@@ -49,10 +51,11 @@ describe('JSON', () => {
 })
 
 
-// describe('toToml', () => {
-//   test('Happy path', () => {
+// describe('TOML', () => {
+//   test('Build', async () => {
 //     // console.log(Netoml.toToml(data))
-//     expect(Netoml.toToml(data)).toBe(toml)
+//     const actual = await Netoml.toToml(options)
+//     console.log(`TOML actual`, actual)
 //   })
 //   xtest('', () => { })
 //   xtest('', () => { })
