@@ -1,5 +1,7 @@
 import auth from '../src/auth'
+// import * as Comnmand from "@netlify/cli-utils"
 
+// console.log(`Comnmand`, Comnmand)
 // import { sum } from '../src';
 // describe('blah', () => {
 //   it('works', () => {
