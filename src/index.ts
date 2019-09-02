@@ -2,8 +2,7 @@
 import toml from 'toml-js'
 
 import Auth from './auth';
-
-// const NetlifyAPI = require("netlify");
+const NetlifyAPI = require("netlify");
 
 export type CommonOptions = { name: string }
 export type JsonOptions = CommonOptions & {}
@@ -45,8 +44,8 @@ export interface NetlifyToml {
   build: Build
 }
 
-export type toJson = (options: JsonOptions) => NetlifyToml;
-export type toToml = (options: TomlOptions) => string;
+export type toJson = (options: JsonOptions) => Promise<NetlifyToml>;
+export type toToml = (options: TomlOptions) => Promise<string>;
 
 export interface Netoml {
   toToml: toToml,
@@ -54,19 +53,26 @@ export interface Netoml {
   isLoggedIn: boolean
 }
 
-// const client = new NetlifyAPI(Auth.accessToken);
+const client = new NetlifyAPI(Auth.accessToken);
 // client.listSites().then((sites: any) => {
 //   const site = sites.filter((site: any) => site.name === "reactblocks")
 //   console.log(JSON.stringify(site, null, 2));
 // }).catch((error: any) => console.log(error))
 
-const toJson: toJson = options => {
+const toJson: toJson = async options => {
   if (options === null) throw Error("Please pass JSON options")
 
-  return { build: null } as unknown as NetlifyToml;
+  const { name } = options;
+  const sites = await client.listSites();
+  if (sites === null || sites.length === 0)
+    throw Error(`Could not find the site matching "${name}"!`)
+
+  // console.log(`sites!=======>`, sites);
+
+  return { build: sites[0] } as unknown as NetlifyToml;
 }
 
-const toToml: toToml = options => {
+const toToml: toToml = async options => {
   if (options === null) return "";
 
   const json = toJson(options)

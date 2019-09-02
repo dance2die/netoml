@@ -256,39 +256,43 @@ describe('JSON', () => {
   })
 
   describe('Build', () => {
-    it('renders Build configuration correctly', () => {
-      const build = {
-        base: "/",
-        publish: "public/",
-        command: "gatsby build",
-        environment: {
-          GITHUB_TOKEN: "github token",
-          TWITTER_CONSUMER_KEY: "twitter consumer key",
-          TWITTER_CONSUMER_SECRET: "twitter consumer secret",
-          TWITTER_ACCESS_TOKEN_KEY: "twitter access tokeh key",
-          TWITTER_ACCESS_TOKEN_SECRET: "twitter access token secret",
-          TWITTER_BEARER_TOKEN: "twitter bearer token"
-        },
-        processing: {
-          css: {
-            bundle: false,
-            minify: true
+    it('renders Build configuration correctly', async () => {
+      const expected = {
+        build: {
+          base: "/",
+          publish: "public/",
+          command: "gatsby build",
+          environment: {
+            GITHUB_TOKEN: "github token",
+            TWITTER_CONSUMER_KEY: "twitter consumer key",
+            TWITTER_CONSUMER_SECRET: "twitter consumer secret",
+            TWITTER_ACCESS_TOKEN_KEY: "twitter access tokeh key",
+            TWITTER_ACCESS_TOKEN_SECRET: "twitter access token secret",
+            TWITTER_BEARER_TOKEN: "twitter bearer token"
           },
-          js: {
-            bundle: true,
-            minify: true
-          },
-          images: {
-            optimize: true
-          },
-          html: {
-            pretty_urls: true
-          },
-          skip_processing: true
+          processing: {
+            css: {
+              bundle: false,
+              minify: true
+            },
+            js: {
+              bundle: true,
+              minify: true
+            },
+            images: {
+              optimize: true
+            },
+            html: {
+              pretty_urls: true
+            },
+            skip_processing: true
+          }
         }
       };
 
-      expect(Netoml.toJson({ name: 'reactblocks' }).build).toEqual(build)
+      const actual = await Netoml.toJson({ name: 'reactblocks' })
+      console.log(`actual ==>`, actual)
+      expect(actual).toBe(expected);
     })
   })
 })
