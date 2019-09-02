@@ -67,9 +67,11 @@ const toJson: toJson = async options => {
   if (sites === null || sites.length === 0)
     throw Error(`Could not find the site matching "${name}"!`)
 
+  const [site] = sites;
+
   // console.log(`sites!=======>`, sites);
 
-  return { build: sites[0] } as unknown as NetlifyToml;
+  return { build: site } as unknown as NetlifyToml;
 }
 
 const toToml: toToml = async options => {
