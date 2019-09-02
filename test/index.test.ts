@@ -16,7 +16,8 @@ describe('JSON', () => {
     it('renders Build configuration correctly', async () => {
       const actual = buildProcessor(site);
       // const actual = await Netoml.toJson(options)
-      console.log(`actual ==>`, actual)
+      // console.log(`actual ==>`, actual)
+      // console.log(`actual ==>`, JSON.stringify(actual, null, 2))
 
       expect(actual).toHaveProperty('publish')
       expect(actual).toHaveProperty('command')
@@ -39,6 +40,41 @@ describe('JSON', () => {
       expect(actual).toHaveProperty('processing.images.compress')
       expect(actual).toHaveProperty('processing.html.pretty_urls')
       expect(actual).toHaveProperty('processing.skip_processing')
+
+      const expected = {
+        "base": "/",
+        "publish": "/public/",
+        "command": "gatsby build",
+        "environment": {
+          "GITHUB_TOKEN": "secret",
+          "TWITTER_CONSUMER_KEY": "secret",
+          "TWITTER_CONSUMER_SECRET": "secret",
+          "TWITTER_ACCESS_TOKEN_KEY": "secret",
+          "TWITTER_ACCESS_TOKEN_SECRET": "secret",
+          "TWITTER_BEARER_TOKEN": "secret"
+        },
+        "functions": "./netlify-functions",
+        "processing": {
+          "css": {
+            "bundle": true,
+            "minify": true
+          },
+          "js": {
+            "bundle": true,
+            "minify": true
+          },
+          "images": {
+            "optimize": true,
+            "compress": false
+          },
+          "html": {
+            "pretty_urls": true
+          },
+          "skip_processing": true
+        }
+      }
+
+      expect(actual).toEqual(expected)
     })
   })
 })
