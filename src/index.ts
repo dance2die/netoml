@@ -68,10 +68,17 @@ const toJson: toJson = async options => {
     throw Error(`Could not find the site matching "${name}"!`)
 
   const [site] = sites;
+  const { build_settings: buildSettings, processing_settings: processing } = site;
 
-  // console.log(`sites!=======>`, sites);
+  const build: Build = {
+    base: buildSettings.base,
+    publish: buildSettings.dir,
+    command: buildSettings.cmd,
+    environment: buildSettings.env,
+    processing
+  }
 
-  return { build: site } as unknown as NetlifyToml;
+  return { build } as unknown as NetlifyToml;
 }
 
 const toToml: toToml = async options => {

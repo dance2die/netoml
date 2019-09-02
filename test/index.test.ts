@@ -263,12 +263,12 @@ describe('JSON', () => {
           publish: "public/",
           command: "gatsby build",
           environment: {
-            GITHUB_TOKEN: "github token",
-            TWITTER_CONSUMER_KEY: "twitter consumer key",
-            TWITTER_CONSUMER_SECRET: "twitter consumer secret",
-            TWITTER_ACCESS_TOKEN_KEY: "twitter access tokeh key",
-            TWITTER_ACCESS_TOKEN_SECRET: "twitter access token secret",
-            TWITTER_BEARER_TOKEN: "twitter bearer token"
+            GITHUB_TOKEN: "aaa",
+            TWITTER_CONSUMER_KEY: "aaa",
+            TWITTER_CONSUMER_SECRET: "aaa",
+            TWITTER_ACCESS_TOKEN_KEY: "aaa",
+            TWITTER_ACCESS_TOKEN_SECRET: "aaa",
+            TWITTER_BEARER_TOKEN: "aaa",
           },
           processing: {
             css: {
