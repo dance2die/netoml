@@ -8,7 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "tsdx watch",
+    "start": "npm run build && node dist/netoml.cjs.development.js",
+    "start:watch": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
     "test:watch": "tsdx test --watch"

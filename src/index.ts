@@ -5,20 +5,18 @@ import Auth from './auth';
 
 const NetlifyAPI = require("netlify");
 
-export type toJson = (obj?: object) => object;
-export type toToml = (json?: object) => string;
+export type CommonOptions = { name: string }
+export type JsonOptions = CommonOptions & {}
+export type TomlOptions = CommonOptions & {}
 
-console.log(`Auth.accessToken)===>`, Auth.accessToken)
+export type toJson = (options?: JsonOptions) => object;
+export type toToml = (options?: TomlOptions) => string;
 
 const client = new NetlifyAPI(Auth.accessToken);
-export interface Site {
-  name: string
-}
-
 client.listSites().then((sites: any) => {
-  console.log(`sites`, sites.filter((site: any) => site.name === "reactblocks"));
+  const site = sites.filter((site: any) => site.name === "reactblocks")
+  console.log(JSON.stringify(site, null, 2));
 }).catch((error: any) => console.log(error))
-
 
 
 const toToml: toToml = json => {
