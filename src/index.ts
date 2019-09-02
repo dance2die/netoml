@@ -9,8 +9,48 @@ export type CommonOptions = { name: string }
 export type JsonOptions = CommonOptions & {}
 export type TomlOptions = CommonOptions & {}
 
-export type toJson = (options?: JsonOptions) => object;
+export interface BuildEnvironment {
+  [name: string]: string;
+}
+export interface BuildProcessing {
+  css: {
+    bundle: boolean;
+    minify: boolean
+  };
+  js: {
+    bundle: boolean;
+    minify: boolean
+  };
+  images: {
+    optimize: boolean
+  };
+  html: {
+    pretty_urls: boolean
+  };
+  skip_processing: boolean
+}
+
+export interface Build {
+  base?: string;
+  // "dir"
+  publish?: string;
+  // "cmd"
+  command?: string;
+  environment?: BuildEnvironment;
+  // "processing_settings"
+  processing: BuildProcessing
+}
+
+export interface NetlifyToml {
+  build: Build
+}
+
+export type toJson = (options?: JsonOptions) => NetlifyToml;
 export type toToml = (options?: TomlOptions) => string;
+
+export interface Netoml {
+  toToml: toToml
+}
 
 const client = new NetlifyAPI(Auth.accessToken);
 client.listSites().then((sites: any) => {
@@ -24,10 +64,6 @@ const toToml: toToml = json => {
   return toml.dump(json);
 }
 
-
-export interface Netoml {
-  toToml: toToml
-}
 const Netoml = {
   toToml
 }

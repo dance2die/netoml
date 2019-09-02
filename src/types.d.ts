@@ -2,7 +2,6 @@ declare module 'toml-js' {
   export function dump(json: object): string;
 }
 
-
 declare module "netlify" {
   export class NetlifyAPI {
     constructor(accessToken: string);
