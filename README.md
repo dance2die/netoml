@@ -72,5 +72,5 @@ const netoml = new Netoml({ accessToken: NETLIFY_ACCESS_TOKEN })
 // Get raw JSON without transforming it to TOML
 console.log(netoml.toJson({ name: 'reactblocks' }))
 // This is TOML version of .`toJson` output
-console.log(netoml.toString({ name: 'reactblocks' }))
+console.log(netoml.toToml({ name: 'reactblocks' }))
 ```
