@@ -1,7 +1,8 @@
 import Auth from '../src/auth'
-import Netoml from '../src'
+// import Netoml from '../src'
+import buildProcessor from '../src/processors/build'
+import { site } from './input'
 
-const options = { name: 'reactblocks' }
 
 describe('Authentication', () => {
   test('user is logged in', () => {
@@ -9,44 +10,35 @@ describe('Authentication', () => {
   });
 });
 
+
 describe('JSON', () => {
-  xdescribe('Edge cases', () => {
-    it('throws error if not authenticated', () => {
-      // @todo: aaaarg. I don't know how to mock and Typescript is getting in the way...
-      // const mock: { isLoggedIn: boolean } = jest.fn<{ isLoggedIn: boolean }, { isLoggedIn: boolean }[]>()
-      // mock.isLoggedIn = false;
-
-      // expect(!Netoml.isLoggedIn).toThrowError();
-    })
-  })
-
   describe('Build', () => {
     it('renders Build configuration correctly', async () => {
-      const actual = await Netoml.toJson(options)
-      // console.log(`actual ==>`, actual)
+      const actual = buildProcessor(site);
+      // const actual = await Netoml.toJson(options)
+      console.log(`actual ==>`, actual)
 
-      expect(actual).toHaveProperty('build')
-      expect(actual).toHaveProperty('build.publish')
-      expect(actual).toHaveProperty('build.command')
-      expect(actual).toHaveProperty('build.functions')
-      expect(actual).toHaveProperty('build.environment')
-      expect(actual).toHaveProperty('build.environment.GITHUB_TOKEN')
-      expect(actual).toHaveProperty('build.environment.TWITTER_CONSUMER_KEY')
-      expect(actual).toHaveProperty('build.environment.TWITTER_CONSUMER_SECRET')
-      expect(actual).toHaveProperty('build.environment.TWITTER_ACCESS_TOKEN_KEY')
-      expect(actual).toHaveProperty('build.environment.TWITTER_ACCESS_TOKEN_SECRET')
-      expect(actual).toHaveProperty('build.environment.TWITTER_BEARER_TOKEN')
-      expect(actual).toHaveProperty('build.processing')
-      expect(actual).toHaveProperty('build.processing.css')
-      expect(actual).toHaveProperty('build.processing.css.bundle')
-      expect(actual).toHaveProperty('build.processing.css.minify')
-      expect(actual).toHaveProperty('build.processing.js')
-      expect(actual).toHaveProperty('build.processing.js.bundle')
-      expect(actual).toHaveProperty('build.processing.js.minify')
-      expect(actual).toHaveProperty('build.processing.images.optimize')
-      expect(actual).toHaveProperty('build.processing.images.compress')
-      expect(actual).toHaveProperty('build.processing.html.pretty_urls')
-      expect(actual).toHaveProperty('build.processing.skip_processing')
+      expect(actual).toHaveProperty('publish')
+      expect(actual).toHaveProperty('command')
+      expect(actual).toHaveProperty('functions')
+      expect(actual).toHaveProperty('environment')
+      expect(actual).toHaveProperty('environment.GITHUB_TOKEN')
+      expect(actual).toHaveProperty('environment.TWITTER_CONSUMER_KEY')
+      expect(actual).toHaveProperty('environment.TWITTER_CONSUMER_SECRET')
+      expect(actual).toHaveProperty('environment.TWITTER_ACCESS_TOKEN_KEY')
+      expect(actual).toHaveProperty('environment.TWITTER_ACCESS_TOKEN_SECRET')
+      expect(actual).toHaveProperty('environment.TWITTER_BEARER_TOKEN')
+      expect(actual).toHaveProperty('processing')
+      expect(actual).toHaveProperty('processing.css')
+      expect(actual).toHaveProperty('processing.css.bundle')
+      expect(actual).toHaveProperty('processing.css.minify')
+      expect(actual).toHaveProperty('processing.js')
+      expect(actual).toHaveProperty('processing.js.bundle')
+      expect(actual).toHaveProperty('processing.js.minify')
+      expect(actual).toHaveProperty('processing.images.optimize')
+      expect(actual).toHaveProperty('processing.images.compress')
+      expect(actual).toHaveProperty('processing.html.pretty_urls')
+      expect(actual).toHaveProperty('processing.skip_processing')
     })
   })
 })
