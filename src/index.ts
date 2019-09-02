@@ -13,11 +13,6 @@ import buildProcessor from './processors/build'
 const NetlifyAPI = require("netlify");
 
 const client = new NetlifyAPI(Auth.accessToken);
-// client.listSites().then((sites: any) => {
-//   const site = sites.filter((site: any) => site.name === "reactblocks")
-//   console.log(JSON.stringify(site, null, 2));
-// }).catch((error: any) => console.log(error))
-
 const toJson: toJson = async options => {
   if (options === null) throw Error("Please pass JSON options")
 
