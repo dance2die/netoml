@@ -21,7 +21,8 @@ export interface BuildProcessing {
     minify: boolean
   };
   images: {
-    optimize: boolean
+    optimize: boolean,
+    compress?: boolean
   };
   html: {
     pretty_urls: boolean
