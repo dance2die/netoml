@@ -1,5 +1,5 @@
 import Auth from '../src/auth'
-// import Netoml from '../src'
+import { convertToToml } from '../src/converters/toml'
 import buildProcessor from '../src/processors/build'
 import { site } from './input'
 
@@ -79,13 +79,42 @@ describe('JSON', () => {
   })
 })
 
+describe('TOML', () => {
+  test('Build', async () => {
+    const actual = await convertToToml({ build: buildProcessor(site) });
+    // console.log(actual)
+    const expected = `[build]
+base = "/"
+publish = "/public/"
+command = "gatsby build"
+functions = "./netlify-functions"
 
-// describe('TOML', () => {
-//   test('Build', async () => {
-//     // console.log(Netoml.toToml(data))
-//     const actual = await Netoml.toToml(options)
-//     console.log(`TOML actual`, actual)
-//   })
-//   xtest('', () => { })
-//   xtest('', () => { })
-// })
+[build.environment]
+GITHUB_TOKEN = "secret"
+TWITTER_CONSUMER_KEY = "secret"
+TWITTER_CONSUMER_SECRET = "secret"
+TWITTER_ACCESS_TOKEN_KEY = "secret"
+TWITTER_ACCESS_TOKEN_SECRET = "secret"
+TWITTER_BEARER_TOKEN = "secret"
+
+[build.processing]
+skip_processing = true
+
+[build.processing.css]
+bundle = true
+minify = true
+
+[build.processing.js]
+bundle = true
+minify = true
+
+[build.processing.images]
+optimize = true
+compress = false
+
+[build.processing.html]
+pretty_urls = true`
+
+    expect(actual).toBe(expected)
+  })
+})
