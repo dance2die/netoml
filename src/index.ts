@@ -3,7 +3,7 @@ import toml from 'toml-js'
 
 import Auth from './auth';
 
-const NetlifyAPI = require("netlify");
+// const NetlifyAPI = require("netlify");
 
 export type CommonOptions = { name: string }
 export type JsonOptions = CommonOptions & {}
@@ -45,27 +45,38 @@ export interface NetlifyToml {
   build: Build
 }
 
-export type toJson = (options?: JsonOptions) => NetlifyToml;
-export type toToml = (options?: TomlOptions) => string;
+export type toJson = (options: JsonOptions) => NetlifyToml;
+export type toToml = (options: TomlOptions) => string;
 
 export interface Netoml {
-  toToml: toToml
+  toToml: toToml,
+  toJson: toJson,
+  isLoggedIn: boolean
 }
 
-const client = new NetlifyAPI(Auth.accessToken);
-client.listSites().then((sites: any) => {
-  const site = sites.filter((site: any) => site.name === "reactblocks")
-  console.log(JSON.stringify(site, null, 2));
-}).catch((error: any) => console.log(error))
+// const client = new NetlifyAPI(Auth.accessToken);
+// client.listSites().then((sites: any) => {
+//   const site = sites.filter((site: any) => site.name === "reactblocks")
+//   console.log(JSON.stringify(site, null, 2));
+// }).catch((error: any) => console.log(error))
 
+const toJson: toJson = options => {
+  if (options === null) throw Error("Please pass JSON options")
 
-const toToml: toToml = json => {
-  if (json === undefined) return "";
+  return { build: null } as unknown as NetlifyToml;
+}
+
+const toToml: toToml = options => {
+  if (options === null) return "";
+
+  const json = toJson(options)
   return toml.dump(json);
 }
 
 const Netoml = {
-  toToml
+  toToml,
+  toJson,
+  isLoggedIn: Auth.isLoggedIn
 }
 
 export default Netoml;
