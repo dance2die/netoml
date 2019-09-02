@@ -63,11 +63,14 @@ _In later version, I might add a flag to pass the access token directly without 
 If you'd like to create a website/server to generate Netlify.toml, you can use `Netoml` as a library.
 
 ```javascript
-import Netoml from 'netoml';
+import Netoml from 'netoml'
 // Or CommonJS
-const Netoml = require('netoml');
+const Netoml = require('netoml')
 
-const netoml = new Netoml({ accessToken: NETLIFY_ACCESS_TOKEN });
+const netoml = new Netoml({ accessToken: NETLIFY_ACCESS_TOKEN })
 
-console.log(netoml.toString({ name: 'reactblocks' }));
+// Get raw JSON without transforming it to TOML
+console.log(netoml.toJson({ name: 'reactblocks' }))
+// This is TOML version of .`toJson` output
+console.log(netoml.toString({ name: 'reactblocks' }))
 ```
