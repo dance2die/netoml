@@ -18,8 +18,8 @@
   },
   "peerDependencies": {},
   "bin": {
-    "ntml": "./cli",
-    "netoml": "./cli"
+    "ntml": "dist/index.js",
+    "netoml": "dist/index.js"
   },
   "husky": {
     "hooks": {
