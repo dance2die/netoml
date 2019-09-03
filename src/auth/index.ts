@@ -25,10 +25,8 @@ class AuthenticationCommand extends BaseCommand {
 
 const authentication = new AuthenticationCommand()
 
-const Auth = {
+export default {
   accessToken: authentication.accessToken,
   isLoggedIn: authentication.accessToken !== undefined,
   login: authentication.login
 }
-
-export default Auth

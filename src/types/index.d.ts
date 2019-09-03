@@ -49,6 +49,16 @@ interface Netoml {
   isLoggedIn: boolean
 }
 
+interface CommandActionOptions {
+  options: {
+    _: [],
+    out: string,
+    overwrite: boolean,
+    o: string,
+    w: boolean
+  }
+}
+
 export {
   CommonOptions
   , JsonOptions
@@ -60,4 +70,5 @@ export {
   , toJson
   , toToml
   , Netoml
+  , CommandActionOptions
 }

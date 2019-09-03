@@ -1,7 +1,7 @@
-import sade from "sade";
 import { version } from "../../package.json"
-import { toml } from './constants'
 import action from './action'
+const sade = require('sade')
+const { toml } = require('./constants')
 
 sade("netoml [siteName]", true)
   .version(version)

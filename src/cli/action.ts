@@ -1,38 +1,22 @@
-/// <reference path="../types.d.ts" />
-import { AutoComplete } from 'enquirer'
-import BaseCommand from "@netlify/cli-utils";
 import chalk from "chalk";
 import ora from "ora";
-import NetlifyAPI from "netlify";
 // import fs from "fs-extra";
 // import path from "path";
+// import NetlifyAPI from "netlify";
+const NetlifyAPI = require('netlify')
+const { AutoComplete } = require('enquirer')
 
-class AuthenticationCommand extends BaseCommand {
-  constructor(...args: any[]) {
-    super(...args);
-    super.init();
-  }
-
-  async login() {
-    await this.expensivelyAuthenticate();
-    return this.exit();
-  }
-
-  get accessToken() {
-    return this.getConfigToken()[0];
-  }
-}
-
-const authentication = new AuthenticationCommand();
+import Auth from '../auth'
+import { CommandActionOptions } from '../types/index';
 
 function showNotLoggingMessage() {
   console.log(chalk.red(`Please login to Netlify to proceed! Exiting...`));
 }
 
 async function getSiteNames() {
-  const client = new NetlifyAPI(authentication.accessToken);
+  const client = new NetlifyAPI(Auth.accessToken);
   const sites = await client.listSites();
-  return sites.map(_ => _.name);
+  return sites.map(({ name }: { name: string }) => name);
 }
 
 async function showSiteNames() {
@@ -51,7 +35,7 @@ async function showSiteNames() {
   return siteName;
 }
 
-const action = async (siteName, options) => {
+const action = async (siteName: string, options: CommandActionOptions) => {
   // console.log(chalk.blue(`siteName=${siteName} & options`), options);
   /*
     1. Authenticate
@@ -71,8 +55,8 @@ const action = async (siteName, options) => {
   */
 
   // 1. authenticate
-  if (await !authentication.isLoggedIn()) {
-    const isLoggedIn = await authentication.login();
+  if (!Auth.isLoggedIn) {
+    const isLoggedIn = await Auth.login();
     if (!isLoggedIn) {
       showNotLoggingMessage();
       return;
