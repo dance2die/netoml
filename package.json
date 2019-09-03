@@ -12,7 +12,9 @@
     "start:watch": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "test:watch": "tsdx test --watch"
+    "test:watch": "tsdx test --watch",
+    "version:alpha": "npm version prerelease --preid=alpha",
+    "publish:alpha": "npm publish --tag alpha"
   },
   "peerDependencies": {},
   "bin": {
