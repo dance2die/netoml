@@ -8,4 +8,4 @@ const toml = {
   path: tomlPath
 };
 
-export default toml
+export { toml }

@@ -1,10 +1,14 @@
 import chalk from "chalk";
 import ora from "ora";
-// import fs from "fs-extra";
+import fs from "fs-extra";
 // import path from "path";
+
+import Netoml from '../index'
+import { toml as tomlConfig } from './config';
+
 // import NetlifyAPI from "netlify";
 const NetlifyAPI = require('netlify')
-const { AutoComplete } = require('enquirer')
+const { AutoComplete, Toggle } = require('enquirer')
 
 import Auth from '../auth'
 import { CommandActionOptions } from '../types/index';
@@ -33,6 +37,37 @@ async function showSiteNames() {
 
   const siteName = await selectSite.run();
   return siteName;
+}
+
+async function showOverwritePrompt() {
+  const overwritePrompt = new Toggle({
+    message: `Overwrite "${tomlConfig.path}?`,
+    enabled: "✔ Yes",
+    disabled: "❌ No"
+  });
+
+  return await overwritePrompt.run();
+}
+
+async function writeToml(siteName: string, options: CommandActionOptions) {
+  /*
+    if TOML doesn't exist, write the file and exit.
+    else
+      if --overwrite=true, then write the file and exit
+      else prompt to overwrite
+  */
+
+  const toml = await Netoml.toToml({ name: siteName })
+
+  if (await fs.pathExists(tomlConfig.path)) {
+    fs.outputFile(tomlConfig.path, toml)
+  } else {
+    const shouldOverwrite = options.overwrite || await showOverwritePrompt();
+    if (shouldOverwrite) {
+      fs.outputFile(tomlConfig.path, toml)
+    }
+  }
+
 }
 
 const action = async (siteName: string, options: CommandActionOptions) => {
@@ -70,8 +105,8 @@ const action = async (siteName: string, options: CommandActionOptions) => {
   }
 
   // 3. Write the netlify.toml
-  // writeToml(siteName, options);
   console.log(`siteName, options`, siteName, options);
+  await writeToml(siteName, options);
 };
 
 // class AuthenticationCommand extends BaseCommand {

@@ -50,13 +50,11 @@ interface Netoml {
 }
 
 interface CommandActionOptions {
-  options: {
-    _: [],
-    out: string,
-    overwrite: boolean,
-    o: string,
-    w: boolean
-  }
+  _: [],
+  out: string,
+  overwrite: boolean,
+  o: string,
+  w: boolean
 }
 
 export {
