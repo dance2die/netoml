@@ -3,7 +3,7 @@ import ora from "ora";
 import fs from "fs-extra";
 // import path from "path";
 
-import Netoml from '../index'
+import toToml from '../converters/toToml'
 import { toml as tomlConfig } from './config';
 
 // import NetlifyAPI from "netlify";
@@ -57,7 +57,7 @@ async function writeToml(siteName: string, options: CommandActionOptions) {
       else prompt to overwrite
   */
 
-  const toml = await Netoml.toToml({ name: siteName })
+  const toml = await toToml({ name: siteName })
 
   if (await fs.pathExists(tomlConfig.path)) {
     fs.outputFile(tomlConfig.path, toml)
