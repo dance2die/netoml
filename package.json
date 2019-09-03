@@ -35,7 +35,12 @@
   },
   "dependencies": {
     "@netlify/cli-utils": "^1.0.7",
+    "chalk": "^2.4.2",
+    "enquirer": "^2.3.1",
+    "fs-extra": "^8.1.0",
     "netlify": "^2.4.8",
+    "ora": "^3.4.0",
+    "sade": "^1.6.1",
     "toml-js": "^0.0.8"
   }
 }
