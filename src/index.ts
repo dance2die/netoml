@@ -7,6 +7,9 @@ import {
 } from './types/index'
 import buildProcessor from './processors/build'
 import { convertToToml } from './converters/toml'
+import { initializeCli } from './cli'
+
+initializeCli();
 
 const NetlifyAPI = require("netlify");
 

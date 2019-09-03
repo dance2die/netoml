@@ -16,8 +16,8 @@
   },
   "peerDependencies": {},
   "bin": {
-    "ntml": "./bin/run",
-    "netoml": "./bin/run"
+    "ntml": "./cli",
+    "netoml": "./cli"
   },
   "husky": {
     "hooks": {

@@ -1,4 +1,5 @@
-const BaseCommand = require("@netlify/cli-utils");
+// const BaseCommand = require("@netlify/cli-utils");
+import { BaseCommand } from "@netlify/cli-utils"
 // const cmd = new BaseCommand()
 
 export interface Auth {
@@ -8,14 +9,14 @@ export interface Auth {
 }
 
 class AuthenticationCommand extends BaseCommand {
-  constructor(...args: any[]) {
-    super(...args);
-    super.init();
-  }
+  // constructor() {
+  //   super();
+  //   super.init();
+  // }
 
   async login() {
     await this.expensivelyAuthenticate();
-    return this.exit();
+    // return this.exit();
   }
 
   get accessToken() {
@@ -24,6 +25,7 @@ class AuthenticationCommand extends BaseCommand {
 }
 
 const authentication = new AuthenticationCommand()
+authentication.init()
 
 export default {
   accessToken: authentication.accessToken,

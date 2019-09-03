@@ -3,7 +3,7 @@ import action from './action'
 const sade = require('sade')
 const { toml } = require('./constants')
 
-sade("netoml [siteName]", true)
+const initializeCli = () => sade("netoml [siteName]", true)
   .version(version)
   .example(`netoml reactblocks`)
   .example(`netoml reactblocks --overwrite`)
@@ -13,3 +13,5 @@ sade("netoml [siteName]", true)
   .option("--overwrite, -w", `Overwrite existing ${toml.name}`, false)
   .action(action)
   .parse(process.argv);
+
+export { initializeCli }
