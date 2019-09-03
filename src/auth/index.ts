@@ -1,5 +1,6 @@
 // const BaseCommand = require("@netlify/cli-utils");
-import { BaseCommand } from "@netlify/cli-utils"
+// import { BaseCommand } from "@netlify/cli-utils"
+import BaseCommand from "@netlify/cli-utils"
 // const cmd = new BaseCommand()
 
 export interface Auth {
@@ -8,24 +9,28 @@ export interface Auth {
   login: () => Promise<boolean>;
 }
 
-class AuthenticationCommand extends BaseCommand {
-  // constructor() {
-  //   super();
-  //   super.init();
-  // }
+class AuthenticationCommand {
+  constructor(private command: BaseCommand = new BaseCommand()) {
+    this.command.init()
+  }
 
   async login() {
-    await this.expensivelyAuthenticate();
-    // return this.exit();
+    try {
+      await this.command.expensivelyAuthenticate();
+      // return this.exit();
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   get accessToken() {
-    return this.getConfigToken()[0];
+    return this.command.getConfigToken()[0];
   }
 }
 
 const authentication = new AuthenticationCommand()
-authentication.init()
+// authentication.init()
 
 export default {
   accessToken: authentication.accessToken,

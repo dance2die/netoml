@@ -10,7 +10,7 @@ declare module "netlify" {
 }
 
 declare module "@netlify/cli-utils" {
-  export class BaseCommand {
+  export default class BaseCommand {
     constructor();
     // Overwritten manually
     getConfigToken(): [string, string];
@@ -18,7 +18,7 @@ declare module "@netlify/cli-utils" {
 
     authenticate(...args: any[]): void;
     expensivelyAuthenticate(...args: any[]): void;
-    init(...args: any[]): void;
+    init(): void;
     log(...args: any[]): void;
     logJson(...args: any[]): void;
     parse(...args: any[]): void;
