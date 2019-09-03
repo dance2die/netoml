@@ -1,7 +1,8 @@
 import { version } from "../../package.json"
 import action from './action'
+import toml from './constants'
 const sade = require('sade')
-const { toml } = require('./constants')
+
 
 const initializeCli = () => sade("netoml [siteName]", true)
   .version(version)
