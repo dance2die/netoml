@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import ora from "ora";
 import fs from "fs-extra";
-// import path from "path";
+import path from "path";
 
 import toToml from '../converters/toToml'
 import { toml as tomlConfig } from './config';
@@ -58,13 +58,14 @@ async function writeToml(siteName: string, options: CommandActionOptions) {
   */
 
   const toml = await toToml({ name: siteName })
+  const destination = !!options.out ? path.resolve(__dirname, options.out) : tomlConfig.path;
 
-  if (await fs.pathExists(tomlConfig.path)) {
-    fs.outputFile(tomlConfig.path, toml)
+  if (await fs.pathExists(destination)) {
+    fs.outputFile(destination, toml)
   } else {
     const shouldOverwrite = options.overwrite || await showOverwritePrompt();
     if (shouldOverwrite) {
-      fs.outputFile(tomlConfig.path, toml)
+      fs.outputFile(destination, toml)
     }
   }
 
