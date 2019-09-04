@@ -5,7 +5,8 @@
   "module": "dist/netoml.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "scripts": {
     "start": "npm run build && node dist/netoml.cjs.development.js",
