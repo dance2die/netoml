@@ -1,5 +1,3 @@
 #!/usr/bin/env node
 
-import { initializeCli } from '../cli'
-
-initializeCli();
+require('../dist/index.js').initializeCli()
