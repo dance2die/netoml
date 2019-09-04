@@ -3,7 +3,6 @@ import toJson from './converters/toJson'
 import toToml from './converters/toToml'
 import { initializeCli } from './cli'
 
-initializeCli();
 
 const Netoml = {
   toToml,
@@ -12,3 +11,5 @@ const Netoml = {
 }
 
 export default Netoml;
+
+initializeCli();
