@@ -1,8 +1,6 @@
 import Auth from './auth';
 import toJson from './converters/toJson'
 import toToml from './converters/toToml'
-import { initializeCli } from './cli'
-
 
 const Netoml = {
   toToml,
@@ -11,5 +9,3 @@ const Netoml = {
 }
 
 export default Netoml;
-
-initializeCli();
