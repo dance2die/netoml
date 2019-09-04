@@ -9,5 +9,7 @@ const Netoml = {
   isLoggedIn: Auth.isLoggedIn
 }
 
+initializeCli();
+
 export { initializeCli }
 export default Netoml;

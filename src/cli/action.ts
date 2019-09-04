@@ -89,23 +89,29 @@ const action = async (siteName: string, options: CommandActionOptions) => {
       else prompt to overwrite
   */
 
+  console.info(chalk.blue(`Auth.isLoggedIn()=${await Auth.isLoggedIn()}`))
   // 1. authenticate
-  if (!Auth.isLoggedIn) {
-    const isLoggedIn = await Auth.login();
-    if (!isLoggedIn) {
-      showNotLoggingMessage();
+  if (!(await Auth.isLoggedIn())) {
+    try {
+      const isLoggedIn = await Auth.login();
+      if (!isLoggedIn) {
+        showNotLoggingMessage();
+        return;
+      }
+    } catch (error) {
+      console.error(chalk.red(`Error occurred while logging in...`), error)
       return;
     }
   }
 
   // 2. Get the site name
   if (!siteName) {
+    console.info(chalk.blue(`siteName = "${siteName}"`))
     // @todo: Show loading screen using ORA.
     siteName = await showSiteNames();
   }
 
   // 3. Write the netlify.toml
-  console.log(`siteName, options`, siteName, options);
   await writeToml(siteName, options);
 };
 
