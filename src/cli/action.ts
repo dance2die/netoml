@@ -13,6 +13,16 @@ const { AutoComplete, Toggle } = require('enquirer')
 import Auth from '../auth'
 import { CommandActionOptions } from '../types/index';
 
+const spin = async (message: string, fn: Function) => {
+  const spinner = ora(message).start();
+  const result = await fn();
+  spinner.stop();
+  return result;
+}
+
+const getDestinationPath = (options: CommandActionOptions) =>
+  !!options.out ? path.resolve(__dirname, options.out) : tomlConfig.path;
+
 function showNotLoggingMessage() {
   console.log(chalk.red(`Please login to Netlify to proceed! Exiting...`));
 }
@@ -24,9 +34,7 @@ async function getSiteNames() {
 }
 
 async function showSiteNames() {
-  const spinner = ora("Fetching site names from Netlify...").start();
-  const siteNames = await getSiteNames();
-  spinner.stop();
+  const siteNames = spin("Fetching site names from Netlify...", getSiteNames)
 
   const selectSite = new AutoComplete({
     name: "Netlify sites",
@@ -39,9 +47,11 @@ async function showSiteNames() {
   return siteName;
 }
 
-async function showOverwritePrompt() {
+async function showOverwritePrompt(options: CommandActionOptions) {
+  const destination = getDestinationPath(options);
+
   const overwritePrompt = new Toggle({
-    message: `Overwrite "${tomlConfig.path}?`,
+    message: `Overwrite "${destination}?`,
     enabled: "✔ Yes",
     disabled: "❌ No"
   });
@@ -58,17 +68,22 @@ async function writeToml(siteName: string, options: CommandActionOptions) {
   */
 
   const toml = await toToml({ name: siteName })
-  const destination = !!options.out ? path.resolve(__dirname, options.out) : tomlConfig.path;
+  const destination = getDestinationPath(options);
 
   if (await fs.pathExists(destination)) {
-    fs.outputFile(destination, toml)
-  } else {
-    const shouldOverwrite = options.overwrite || await showOverwritePrompt();
-    if (shouldOverwrite) {
-      fs.outputFile(destination, toml)
+    const shouldOverwrite = options.overwrite || await showOverwritePrompt(options);
+    if (!shouldOverwrite) {
+      console.info(chalk.blue(`Exiting without overwriting ${destination}...`))
     }
   }
 
+  spin(``, () => {
+    fs.outputFile(destination, toml);
+    console.log(chalk.green(`Wrote settings in ${destination}...`))
+  })
+
+  // fs.outputFile(destination, toml)
+  // console.log(chalk.green(`Wrote settings in ${destination}...`))
 }
 
 const action = async (siteName: string, options: CommandActionOptions) => {
@@ -90,7 +105,6 @@ const action = async (siteName: string, options: CommandActionOptions) => {
       else prompt to overwrite
   */
 
-  console.info(chalk.blue(`Auth.isLoggedIn()=${await Auth.isLoggedIn()}`))
   // 1. authenticate
   if (!(await Auth.isLoggedIn())) {
     try {
