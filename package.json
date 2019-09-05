@@ -1,6 +1,19 @@
 {
   "name": "netoml",
   "version": "0.1.1",
+  "description": "Generate Netlify.toml from Netlify - Note that is not an official Netlify project nor assicated with Netlify",
+  "author": "Sung Kim <sungmkim80@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dance2die/netoml.git"
+  },
+  "homepage": "https://github.com/dance2die/netoml.git",
+  "keywords": [
+    "netlify",
+    "toml",
+    "cli"
+  ],
   "main": "dist/index.js",
   "module": "dist/netoml.esm.js",
   "typings": "dist/index.d.ts",
