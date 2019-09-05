@@ -15,6 +15,7 @@ declare module "@netlify/cli-utils" {
     // Overwritten manually
     getConfigToken(): [string, string];
     isLoggedIn(): Promise<boolean>;
+    exit(): void;
 
     authenticate(...args: any[]): void;
     expensivelyAuthenticate(...args: any[]): void;
