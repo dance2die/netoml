@@ -3,12 +3,12 @@ import { NetlifyToml, toJson } from '../types/index'
 import buildProcessor from '../processors/build'
 
 const NetlifyAPI = require("netlify");
-const client = new NetlifyAPI(Auth.accessToken);
 
 const toJson: toJson = async options => {
   if (options === null) throw Error("Please pass JSON options")
 
   const { name } = options;
+  const client = new NetlifyAPI(Auth.accessToken);
   const sites = await client.listSites();
   if (sites === null || sites.length === 0)
     throw Error(`Could not find any site!`)
