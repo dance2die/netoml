@@ -20,7 +20,7 @@ const spin = async (message: string, fn: Function) => {
 }
 
 const getDestinationPath = (options: CommandActionOptions) =>
-  !!options.out ? path.resolve(__dirname, options.out) : tomlConfig.path;
+  !!options.out ? path.resolve(process.cwd(), options.out) : tomlConfig.path;
 
 function showNotLoggingMessage() {
   console.log(chalk.red(`Please login to Netlify to proceed! Exiting...`));
