@@ -16,9 +16,7 @@ class AuthenticationCommand {
 
   async login() {
     try {
-      console.log(`loging in... expensively...`)
       await this.command.expensivelyAuthenticate();
-      return this.command.exit();
       return true;
     } catch {
       return false;
