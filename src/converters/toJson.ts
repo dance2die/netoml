@@ -11,12 +11,15 @@ const toJson: toJson = async options => {
   const { name } = options;
   const sites = await client.listSites();
   if (sites === null || sites.length === 0)
+    throw Error(`Could not find any site!`)
+
+  // const [site] = sites;
+  const foundSites = sites.filter(({ name: siteName }: { name: string }) => siteName === name);
+  if (foundSites.length <= 0)
     throw Error(`Could not find the site matching "${name}"!`)
 
-  const [site] = sites;
-  const build = buildProcessor(site);
-
-  return { build } as unknown as NetlifyToml;
+  const build = buildProcessor(foundSites[0]);
+  return { build } as NetlifyToml;
 }
 
 export default toJson;

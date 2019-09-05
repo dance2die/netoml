@@ -121,8 +121,6 @@ const action = async (siteName: string, options: CommandActionOptions) => {
 
   // 2. Get the site name
   if (!siteName) {
-    console.info(chalk.blue(`siteName = "${siteName}"`))
-    // @todo: Show loading screen using ORA.
     siteName = await showSiteNames();
   }
 
