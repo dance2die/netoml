@@ -24,6 +24,8 @@ class AuthenticationCommand {
   }
 
   async isLoggedIn() {
+    // const files = await this.command.netlify.api.listSiteAssets({ site_id: '1810f4ce-e66d-49d4-9053-9e42e636aec2' });
+    // console.log(`assets===>`, files)
     return await this.command.isLoggedIn()
   }
 

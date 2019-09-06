@@ -24,7 +24,9 @@
   "scripts": {
     "start": "npm run build && node dist/netoml.cjs.development.js",
     "start:watch": "tsdx watch",
-    "start:cli": "npm run build && bin/run",
+    "start:cli": "npm run build && bin/run --nolazy --inspect-brk=9229",
+    "start:cli:nobreak": "npm run build && bin/run",
+    "start:cli:fast": "bin/run --nolazy --inspect-brk=9229",
     "build": "tsdx build",
     "test": "tsdx test",
     "test:watch": "tsdx test --watch",
