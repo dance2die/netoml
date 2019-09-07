@@ -1,7 +1,13 @@
 import { Build } from '../types/index'
 
 export default (site: any): Build => {
-  const { build_settings: buildSettings, processing_settings } = site;
+  const { build_settings, processing_settings } = site;
+
+  const base = build_settings.base || null;
+  const publish = build_settings.dir || null;
+  const command = build_settings.cmd || null;
+  const environment = build_settings.env || null;
+  const functions = build_settings.functions_dir || null;
 
   const defaultProcessing = {
     css: {
@@ -42,11 +48,11 @@ export default (site: any): Build => {
   })
 
   return {
-    base: buildSettings.base || null,
-    publish: buildSettings.dir || null,
-    command: buildSettings.cmd || null,
-    environment: buildSettings.env || null,
-    functions: buildSettings.functions_dir || null,
+    base,
+    publish,
+    command,
+    environment,
+    functions,
     processing
   }
 }
