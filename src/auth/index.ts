@@ -1,7 +1,4 @@
-// const BaseCommand = require("@netlify/cli-utils");
-// import { BaseCommand } from "@netlify/cli-utils"
 import BaseCommand from "@netlify/cli-utils"
-// const cmd = new BaseCommand()
 
 export interface Auth {
   accessToken: string;
@@ -33,10 +30,4 @@ class AuthenticationCommand {
 }
 
 const authentication = new AuthenticationCommand()
-// authentication.init()
 export default authentication;
-// export default {
-//   accessToken: authentication.accessToken,
-//   isLoggedIn: authentication.isLoggedIn,
-//   login: authentication.login
-// }
