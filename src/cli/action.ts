@@ -71,7 +71,7 @@ async function writeToml(siteName: string, options: CommandActionOptions) {
 
   spin(``, () => {
     fs.outputFile(destination, toml);
-    console.log(chalk.green(`Wrote settings in ${destination}...`))
+    console.log(chalk.green(`Wrote settings in ${destination}...`), toml)
   })
 }
 
