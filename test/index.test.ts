@@ -1,10 +1,10 @@
 import Auth from '../src/auth'
 import { convertToToml } from '../src/converters/toml'
 import buildProcessor from '../src/processors/build'
-import { site } from './input'
+import { site, siteWithoutBuild } from './input'
 
 
-describe('Authentication', () => {
+xdescribe('Authentication', () => {
   test('user is logged in', () => {
     expect(Auth.isLoggedIn).toBe(true)
   });
@@ -98,6 +98,36 @@ TWITTER_ACCESS_TOKEN_SECRET = "secret"
 TWITTER_BEARER_TOKEN = "secret"
 
 [build.processing]
+skip_processing = true
+
+[build.processing.css]
+bundle = true
+minify = true
+
+[build.processing.js]
+bundle = true
+minify = true
+
+[build.processing.images]
+optimize = true
+compress = false
+
+[build.processing.html]
+pretty_urls = true`
+
+    expect(actual).toBe(expected)
+  })
+
+  /**
+   * Site created from Netlify Drop doesn't contain build settings by default.
+   * https://app.netlify.com/drop
+   * 
+   * Just create an empty `[build]` without any content underneath.
+   */
+  test('Site without build using Netlify Drop', async () => {
+    const actual = await convertToToml({ build: buildProcessor(siteWithoutBuild) });
+    // console.log(actual)
+    const expected = `[build.processing]
 skip_processing = true
 
 [build.processing.css]

@@ -42,11 +42,11 @@ export default (site: any): Build => {
   })
 
   return {
-    base: buildSettings.base,
-    publish: buildSettings.dir,
-    command: buildSettings.cmd,
-    environment: buildSettings.env,
-    functions: buildSettings.functions_dir,
+    base: buildSettings.base || null,
+    publish: buildSettings.dir || null,
+    command: buildSettings.cmd || null,
+    environment: buildSettings.env || null,
+    functions: buildSettings.functions_dir || null,
     processing
   }
 }

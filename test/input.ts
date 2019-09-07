@@ -239,4 +239,215 @@ const site = {
   "analytics_instance_id": null
 }
 
-export { site }
+const siteWithoutBuild =
+{
+  "id": "1d8ca295-ed8c-4c8c-9723-2ad972d536c5",
+  "site_id": "1d8ca295-ed8c-4c8c-9723-2ad972d536c5",
+  "plan": "nf_team_dev",
+  "plan_data": {
+    "title": "Netlify Team Free",
+    "asset_acceleration": true,
+    "form_processing": true,
+    "cdn_propagation": "partial",
+    "build_gc_exchange": "buildbot-gc",
+    "build_node_pool": "buildbot-external-ssd",
+    "build_cluster": "buildbot-3",
+    "domain_aliases": true,
+    "secure_site": false,
+    "prerendering": true,
+    "proxying": true,
+    "ssl": "custom",
+    "rate_cents": 0,
+    "yearly_rate_cents": 0,
+    "cdn_network": "free_cdn_network",
+    "ipv6_domain": "cdn.makerloop.com",
+    "branch_deploy": true,
+    "managed_dns": true,
+    "geo_ip": true,
+    "split_testing": true,
+    "id": "nf_team_dev"
+  },
+  "ssl_plan": null,
+  "premium": false,
+  "claimed": true,
+  "name": "condescending-feynman-84d72d",
+  "custom_domain": null,
+  "domain_aliases": [],
+  "password": null,
+  "notification_email": null,
+  "url": "http://condescending-feynman-84d72d.netlify.com",
+  "admin_url": "https://app.netlify.com/sites/condescending-feynman-84d72d",
+  "deploy_id": "5d71b5ed0a49630af6ef189d",
+  "build_id": "",
+  "deploy_url": "http://5d71b5ed0a49630af6ef189d.condescending-feynman-84d72d.netlify.com",
+  "state": "current",
+  "screenshot_url": "https://353a23c500dde3b2ad58-c49fe7e7355d384845270f4a7a0a7aa1.ssl.cf2.rackcdn.com/5d71b5ed0a49630af6ef189d/screenshot.png",
+  "created_at": "2019-09-06T01:27:09.505Z",
+  "updated_at": "2019-09-06T01:27:13.523Z",
+  "user_id": "5a273aeda114773ce21d7dc0",
+  "error_message": null,
+  "ssl": false,
+  "ssl_url": "https://condescending-feynman-84d72d.netlify.com",
+  "force_ssl": null,
+  "ssl_status": null,
+  "max_domain_aliases": 100,
+  "build_settings": {},
+  "processing_settings": {
+    "css": {
+      "bundle": true,
+      "minify": true
+    },
+    "js": {
+      "bundle": true,
+      "minify": true
+    },
+    "images": {
+      "optimize": true
+    },
+    "html": {
+      "pretty_urls": true
+    },
+    "skip": true
+  },
+  "prerender": null,
+  "prerender_headers": null,
+  "deploy_hook": null,
+  "published_deploy": {
+    "id": "5d71b5ed0a49630af6ef189d",
+    "site_id": "1d8ca295-ed8c-4c8c-9723-2ad972d536c5",
+    "build_id": null,
+    "state": "ready",
+    "name": "condescending-feynman-84d72d",
+    "url": "http://condescending-feynman-84d72d.netlify.com",
+    "ssl_url": "https://condescending-feynman-84d72d.netlify.com",
+    "admin_url": "https://app.netlify.com/sites/condescending-feynman-84d72d",
+    "deploy_url": "http://5d71b5ed0a49630af6ef189d.condescending-feynman-84d72d.netlify.com",
+    "deploy_ssl_url": "https://5d71b5ed0a49630af6ef189d--condescending-feynman-84d72d.netlify.com",
+    "created_at": "2019-09-06T01:27:09.721Z",
+    "updated_at": "2019-09-06T01:27:13.520Z",
+    "user_id": "5a273aeda114773ce21d7dc0",
+    "error_message": null,
+    "required": [],
+    "required_functions": [],
+    "commit_ref": null,
+    "review_id": null,
+    "branch": null,
+    "commit_url": null,
+    "skipped": null,
+    "locked": null,
+    "log_access_attributes": {
+      "type": "firebase",
+      "url": "https://netlify-builds2.firebaseio.com/deploys/5d71b5ed0a49630af6ef189d/log",
+      "endpoint": "https://netlify-builds2.firebaseio.com",
+      "path": "/deploys/5d71b5ed0a49630af6ef189d/log",
+      "token": "0VPdBEVIpCELfwkwswXemwtSydJqaDDZxZZhN9fV"
+    },
+    "title": null,
+    "review_url": null,
+    "published_at": "2019-09-06T01:27:09.916Z",
+    "context": "production",
+    "deploy_time": 0,
+    "available_functions": [],
+    "summary": {
+      "status": "ready",
+      "messages": [
+        {
+          "type": "info",
+          "title": "All files already uploaded",
+          "description": "All files already uploaded by a previous deploy with the same commits.",
+          "details": null
+        },
+        {
+          "type": "info",
+          "title": "No redirect rules processed",
+          "description": "This deploy did not include any redirect rules. [Learn more about redirects](https://www.netlify.com/docs/redirects/).",
+          "details": ""
+        },
+        {
+          "type": "info",
+          "title": "No header rules processed",
+          "description": "This deploy did not include any header rules. [Learn more about headers](https://www.netlify.com/docs/headers-and-basic-auth/).",
+          "details": ""
+        },
+        {
+          "type": "info",
+          "title": "All linked resources are secure",
+          "description": "Congratulations! No insecure mixed content found in your files.",
+          "details": null
+        }
+      ]
+    },
+    "screenshot_url": "https://353a23c500dde3b2ad58-c49fe7e7355d384845270f4a7a0a7aa1.ssl.cf2.rackcdn.com/5d71b5ed0a49630af6ef189d/screenshot.png",
+    "site_capabilities": {
+      "title": "Netlify Team Free",
+      "asset_acceleration": true,
+      "form_processing": true,
+      "cdn_propagation": "partial",
+      "build_gc_exchange": "buildbot-gc",
+      "build_node_pool": "buildbot-external-ssd",
+      "build_cluster": "buildbot-3",
+      "domain_aliases": true,
+      "secure_site": false,
+      "prerendering": true,
+      "proxying": true,
+      "ssl": "custom",
+      "rate_cents": 0,
+      "yearly_rate_cents": 0,
+      "cdn_network": "free_cdn_network",
+      "ipv6_domain": "cdn.makerloop.com",
+      "branch_deploy": true,
+      "managed_dns": true,
+      "geo_ip": true,
+      "split_testing": true,
+      "id": "nf_team_dev"
+    },
+    "committer": null,
+    "skipped_log": null
+  },
+  "managed_dns": true,
+  "jwt_secret": null,
+  "jwt_roles_path": "app_metadata.authorization.roles",
+  "account_slug": "dance2die",
+  "account_name": "Sung Kim's team",
+  "account_type": "Starter",
+  "capabilities": {
+    "title": "Netlify Team Free",
+    "asset_acceleration": true,
+    "form_processing": true,
+    "cdn_propagation": "partial",
+    "build_gc_exchange": "buildbot-gc",
+    "build_node_pool": "buildbot-external-ssd",
+    "build_cluster": "buildbot-3",
+    "domain_aliases": true,
+    "secure_site": false,
+    "prerendering": true,
+    "proxying": true,
+    "ssl": "custom",
+    "rate_cents": 0,
+    "yearly_rate_cents": 0,
+    "cdn_network": "free_cdn_network",
+    "ipv6_domain": "cdn.makerloop.com",
+    "branch_deploy": true,
+    "managed_dns": true,
+    "geo_ip": true,
+    "split_testing": true,
+    "id": "nf_team_dev"
+  },
+  "active_subscription_ids": [],
+  "external_contributors_enabled": false,
+  "paid_individual_site_subscription": false,
+  "dns_zone_id": null,
+  "identity_instance_id": null,
+  "use_functions": null,
+  "parent_user_id": null,
+  "automatic_tls_provisioning": null,
+  "disabled": null,
+  "lifecycle_state": "active",
+  "id_domain": "1d8ca295-ed8c-4c8c-9723-2ad972d536c5.netlify.com",
+  "use_lm": null,
+  "build_image": "xenial",
+  "automatic_tls_provisioning_expired": false,
+  "analytics_instance_id": null
+}
+
+export { site, siteWithoutBuild }
