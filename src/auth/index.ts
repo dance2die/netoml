@@ -36,6 +36,4 @@ class AuthenticationCommand implements Auth {
 }
 
 const authentication = new AuthenticationCommand()
-const setAccessToken = (accessToken: string) => authentication.accessToken = accessToken
-export { setAccessToken }
 export default authentication;
