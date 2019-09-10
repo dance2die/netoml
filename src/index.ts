@@ -1,12 +1,16 @@
-import Auth from './auth';
 import toJson from './converters/toJson'
 import toToml from './converters/toToml'
 import { initializeCli } from './cli/index'
 
-const Netoml = {
-  toToml,
-  toJson,
-  isLoggedIn: Auth.isLoggedIn
+import { JsonOptions, TomlOptions } from './types/index'
+
+class Netoml {
+  async toJson(options: JsonOptions) {
+    return toJson(options)
+  }
+  async toToml(options: TomlOptions) {
+    return toToml(options)
+  }
 }
 
 export { initializeCli }

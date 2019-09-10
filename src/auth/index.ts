@@ -29,8 +29,13 @@ class AuthenticationCommand implements Auth {
   get accessToken() {
     return this._accessToken === '' ? this.command.getConfigToken()[0] : this._accessToken
   }
+
+  set accessToken(value: string) {
+    this._accessToken = value
+  }
 }
 
 const authentication = new AuthenticationCommand()
-export { AuthenticationCommand }
+const setAccessToken = (accessToken: string) => authentication.accessToken = accessToken
+export { setAccessToken }
 export default authentication;
