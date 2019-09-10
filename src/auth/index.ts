@@ -6,7 +6,7 @@ export interface Auth {
   login: () => Promise<boolean>;
 }
 
-export class AuthenticationCommand implements Auth {
+class AuthenticationCommand implements Auth {
   constructor(
     private _accessToken = "",
     private command: BaseCommand = new BaseCommand()) {
@@ -32,5 +32,5 @@ export class AuthenticationCommand implements Auth {
 }
 
 const authentication = new AuthenticationCommand()
-
+export { AuthenticationCommand }
 export default authentication;
