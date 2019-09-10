@@ -2,14 +2,26 @@ import Auth from '../src/auth'
 import { convertToToml } from '../src/converters/toml'
 import buildProcessor from '../src/processors/build'
 import { site, siteWithoutBuild } from './input'
+import Netoml from '../src/index'
 
 
 describe('Authentication', () => {
+  const expectedAccessToken: string = 'expectedAccessToken access token';
+
+  beforeEach(() => {
+    Auth.accessToken = '';
+  })
+
   test('AuthenticationCommand accepts an access token', () => {
-    const expected: string = 'expected access token';
-    Auth.accessToken = expected
-    expect(Auth.accessToken).toBe(expected)
+    Auth.accessToken = expectedAccessToken
+    expect(Auth.accessToken).toBe(expectedAccessToken)
   });
+
+  test('that Netoml access token updates Auth.accessToken', () => {
+    const sut = new Netoml({ accessToken: expectedAccessToken })
+    expect(Auth.accessToken).toBe(sut.accessToken);
+    expect(Auth.accessToken).toBe(expectedAccessToken);
+  })
 });
 
 
