@@ -1,13 +1,15 @@
 import BaseCommand from "@netlify/cli-utils"
 
 export interface Auth {
-  accessToken: string;
-  isLoggedIn: Promise<boolean>;
+  accessToken: string | undefined;
+  isLoggedIn: () => Promise<boolean>;
   login: () => Promise<boolean>;
 }
 
-class AuthenticationCommand {
-  constructor(private command: BaseCommand = new BaseCommand()) {
+export class AuthenticationCommand implements Auth {
+  constructor(
+    private _accessToken = "",
+    private command: BaseCommand = new BaseCommand()) {
     this.command.init()
   }
 
@@ -25,9 +27,10 @@ class AuthenticationCommand {
   }
 
   get accessToken() {
-    return this.command.getConfigToken()[0];
+    return this._accessToken === '' ? this.command.getConfigToken()[0] : this._accessToken
   }
 }
 
 const authentication = new AuthenticationCommand()
+
 export default authentication;

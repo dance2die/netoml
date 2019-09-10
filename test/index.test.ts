@@ -1,12 +1,14 @@
-import Auth from '../src/auth'
+import { AuthenticationCommand } from '../src/auth'
 import { convertToToml } from '../src/converters/toml'
 import buildProcessor from '../src/processors/build'
 import { site, siteWithoutBuild } from './input'
 
 
-xdescribe('Authentication', () => {
-  test('user is logged in', () => {
-    expect(Auth.isLoggedIn).toBe(true)
+describe('Authentication', () => {
+  test('AuthenticationCommand accepts an access token', () => {
+    const expected: string = 'expected access token';
+    const sut = new AuthenticationCommand(expected)
+    expect(sut.accessToken).toBe(expected)
   });
 });
 
