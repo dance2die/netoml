@@ -96,11 +96,13 @@ ntml --console
 
 #### Flags
 
-- --out | -o - Name of output file (e.g. `netlify.toml` or `../../netlify.toml`)
-- --overwrite | -ow - Overwrite existing `netlify.toml` file without prompt
-- --console | -c Writes TOML to console only (this does not write TOML to a file)
-
-_In later version, I might add a flag to pass the access token directly without having to login using `netlify-cli`._
+| Short | Long        | Description                                                       |
+| ----- | ----------- | ----------------------------------------------------------------- |
+| -o    | --out       | Name of output file (e.g. `netlify.toml` or `../../netlify.toml`) |
+| -w    | --overwrite | Overwrite existing `netlify.toml` file without prompt             |
+| -c    | --console   | Writes TOML to console only (this does not write TOML to a file)  |
+| -v    | --version   | Prints the CLI version                                            |
+| -h    | --help      | Prints the CLI help message.                                      |
 
 ### Library
 
