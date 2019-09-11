@@ -32,7 +32,7 @@
     "test:watch": "tsdx test --watch",
     "version:alpha": "npm version prerelease --preid=alpha",
     "publish:alpha": "npm publish --tag alpha",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "peerDependencies": {},
   "bin": {
