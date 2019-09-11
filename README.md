@@ -1,13 +1,8 @@
-## README first
-
-This CLI/library is not fully implemented, yet.
-Please only try if you are adventurous as document can be slightly outdated 😉
-
 # Netoml
 
-A library to build Netlify TOML
+A CLI to build to build Netlify TOML
 
-Also can be used a as a CLI.
+Also can be used a as a JavaScript library.
 
 ## Usage
 
