@@ -108,8 +108,8 @@ If you'd like to create a website/server to generate Netlify.toml, you can use `
 
 ```javascript
 import Netoml from 'netoml'
-// Or CommonJS
-const Netoml = require('netoml')
+// Or CommonJS - Note the ".default"
+const Netoml = require('netoml').default
 
 const netoml = new Netoml({ accessToken: NETLIFY_ACCESS_TOKEN })
 
