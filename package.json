@@ -1,6 +1,6 @@
 {
   "name": "netoml",
-  "version": "0.2.1-alpha.4",
+  "version": "0.2.1-alpha.5",
   "description": "Generate Netlify.toml from Netlify - Note that is not an official Netlify project nor assicated with Netlify",
   "author": "Sung Kim <sungmkim80@gmail.com>",
   "license": "MIT",
