@@ -58,10 +58,6 @@ Note that `site_name` is _**optional**_.
 If you do not specify it, the CLI will retrieve all of your Netlify site names, and let you select a site.
 
 The command above will generate `netlify.toml` in the current directory for the site specified as `site_name`.  
-_Note that it still saves it to where CLI is installed_
-
-_To get around, use the option `--out ~/netlify.toml`_
-
 If you already have an existing `netlify.toml` file in the current directly, you will be prompted to overwrite or rename it.
 
 ```bash
