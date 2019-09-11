@@ -54,6 +54,9 @@ Running the following command will create `netlify.toml` in the current director
 $ netoml site_name
 ```
 
+Note that `site_name` is _**optional**_.  
+If you do not specify it, the CLI will retrieve all of your Netlify site names, and let you select a site.
+
 The command above will generate `netlify.toml` in the current directory for the site specified as `site_name`.  
 _Note that it still saves it to where CLI is installed_
 
@@ -75,7 +78,7 @@ netoml site_name --out private-netlify.toml
 netoml site_name -o private-netlify.toml
 ```
 
-Lastly, you can overwrite the existing `netlify.toml` without being prompted.
+You can overwrite the existing `netlify.toml` without being prompted.
 
 ```bash
 netoml site_name --ovewrite
@@ -83,10 +86,19 @@ netoml site_name --ovewrite
 netoml site_name -ow
 ```
 
+If you want to see the content of TOML without writing to a file, you can specify `--console | -c` flag to see the output in the console only.
+
+```bash
+netoml --console
+- or -
+ntml --console
+```
+
 #### Flags
 
 - --out | -o - Name of output file (e.g. `netlify.toml` or `../../netlify.toml`)
 - --overwrite | -ow - Overwrite existing `netlify.toml` file without prompt
+- --console | -c Writes TOML to console only (this does not write TOML to a file)
 
 _In later version, I might add a flag to pass the access token directly without having to login using `netlify-cli`._
 
