@@ -58,14 +58,13 @@ async function showOverwritePrompt(options: CommandActionOptions) {
   return await overwritePrompt.run();
 }
 
-async function writeToml(siteName: string, options: CommandActionOptions) {
-  const toml = await toToml({ name: siteName })
+async function writeToml(toml: string, options: CommandActionOptions) {
   const destination = getDestinationPath(options);
 
   if (await fs.pathExists(destination)) {
     const shouldOverwrite = options.overwrite || await showOverwritePrompt(options);
     if (!shouldOverwrite) {
-      console.info(chalk.blue(`Exiting without overwriting ${destination}...`))
+      console.info(chalk.red(`Exiting without overwriting ${destination}...`))
     }
   }
 
@@ -111,8 +110,13 @@ const action = async (siteName: string, options: CommandActionOptions) => {
     siteName = await showSiteNames();
   }
 
-  // 3. Write the netlify.toml
-  await writeToml(siteName, options);
+  // 3. Write the netlify.toml if --console is not set.
+  const toml = await toToml({ name: siteName })
+  if (options.console) {
+    console.log(chalk.blue(toml))
+  } else {
+    await writeToml(toml, options);
+  }
 };
 
 export default action

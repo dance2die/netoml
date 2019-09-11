@@ -11,6 +11,7 @@ const initializeCli = () => sade("netoml [siteName]", true)
   .example(`netoml reactblocks --out reactblocks.netlify.toml --overwrite`)
   .option("--out, -o", `output ${toml.name} file name`, toml.name)
   .option("--overwrite, -w", `Overwrite existing ${toml.name}`, false)
+  .option("--console, -c", `Write TOML output to console`, false)
   .action(action)
   .parse(process.argv);
 
