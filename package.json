@@ -60,7 +60,7 @@
     "@netlify/cli-utils": "^1.1.0",
     "chalk": "^2.4.2",
     "enquirer": "^2.3.2",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.0",
     "netlify": "^2.4.8",
     "ora": "^4.0.2",
     "sade": "^1.6.1",
